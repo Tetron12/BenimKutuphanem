@@ -1,0 +1,25 @@
+name: validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  skill-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate all SKILL.md files
+        run: python scripts/validate_skills.py
+      - name: Secret scan (fail if real secret leaked)
+        run: |
+          if grep -rIlE "gho_[a-zA-Z0-9]{20}|sk-[a-zA-Z0-9]{32}|sk-or-[a-zA-Z0-9]{20}|sk-ant-[a-zA-Z0-9]{20}|gsk_[a-zA-Z0-9]{20}|xox[baprs]-[a-zA-Z0-9-]{10}" skills/ config.yaml SOUL.md 2>/dev/null; then
+            echo "REAL SECRET DETECTED — blocking push"
+            exit 1
+          fi
+          echo "secret scan clean"

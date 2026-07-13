@@ -1,3 +1,46 @@
-.vs/ 
-bin/ 
-obj/ 
+# === Secret / credential ===
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.crt
+auth.json
+credentials.json
+
+# === State / DB ===
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# === Build / deps ===
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
+bin/
+obj/
+
+# === OS / editor ===
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# === Large binaries (asset) — track etme, LFS kullan ===
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.webm
+*.zip
+*.rar
+*.exe
+*.dll

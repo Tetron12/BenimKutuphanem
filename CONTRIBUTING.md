@@ -1,7 +1,6 @@
 # Contributing
 
 Bu repo Abdulsamet Derbeder'in kişisel Hermes Agent yapısını içerir.
-Katkı için:
 
 ## Skill Ekleme / Düzenleme
 1. `skills/<isim>/SKILL.md` oluştur/düzenle.
